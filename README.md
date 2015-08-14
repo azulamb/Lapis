@@ -63,7 +63,7 @@ $ git clone https://github.com/HirokiMiyaoka/Lapis.git
 ### Prepare
 
 ```
-$ cd /home/lapis/
+$ cd /home/lapis/Lapis
 $ npm i
 ```
 
@@ -97,6 +97,12 @@ node lapis.js
 
 ```
 $ forever stop lapis.js
+```
+
+### Look log
+
+```
+$ forever logs lapis.js
 ```
 
 ## Add script
