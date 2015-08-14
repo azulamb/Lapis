@@ -1,5 +1,6 @@
 # Lapis
-Lapis is bot.
+
+Lapis is Slack bot.
 
 ## Get token
 
@@ -52,7 +53,7 @@ or
 $ mkdir /home/lapis
 ```
 
-### clone
+### Clone
 
 ```
 $ cd /home/lapis/
@@ -66,13 +67,15 @@ $ cd /home/lapis/
 $ npm i
 ```
 
+## Service
+
 ### Service start
 
 ```
 $ npm run service
 ```
 
-or 
+or
 
 ```
 forever start /home/lapis/Lapis/lapis.js -l /home/lapis/Lapis/log
@@ -86,10 +89,40 @@ node lapis.js
 
 ### Service stop
 
+#### Install forever
+
 ```
 # npm i -g forever
 ```
 
 ```
-$ forever stopall
+$ forever stop lapis.js
+```
+
+## Add script
+
+Create script in script dir.
+
+Filename is *.js.
+
+### Function
+
+You need function.
+
+### isMatch
+
+Analysis message.
+
+Return true if you want to anything.
+
+```
+exports.isMatch = function( msg ){ return true or false; }
+```
+
+Action.
+
+```
+exports.exec = function( slack, channel, message ){
+	// Action.
+}
 ```
