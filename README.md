@@ -7,7 +7,7 @@ https://api.slack.com/docs/oauth
 
 ### Step.1 Create application
 
-https://azulite.slack.com/services/new
+https://***.slack.com/services/new
 
 move DIY Integrations & Customizations
 
