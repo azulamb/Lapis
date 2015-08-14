@@ -1,19 +1,18 @@
 var Slack = require('slack-client');
 var fs = require('fs');
 
-
 Lapis = {
 	slack: null,
 	scripts: [],
 
 	start: function()
 	{
+		var self = this;
 		// Slack setting
 		var autoReconnect = true;
 		var autoMark = true;
-		var self = this;
 
-		self.slack = new Slack( process.env.SLACK_LAPIS_TOKEN || "", autoReconnect, autoMark);
+		self.slack = new Slack( process.env.SLACK_LAPIS_TOKEN || "", autoReconnect, autoMark );
 
 		self.slack.on( 'open', function()
 		{
@@ -59,10 +58,11 @@ Lapis = {
 				{
 					var script = require( dir + file );
 					var add = script.isMatch && script.exec;
-					console.log( 'Load script ' + file + ' ... ' + ( add ? '[  OK  ]' : '[FAILED]') );
+					console.log( 'Load script ' + file + ( new Array( 57 - file.length ).join( ' ' ) ) + '... ' + ( add ? '[  OK  ]' : '[FAILED]') );
 					if ( add ){ self.scripts.push( script ); }
 				})( file );
 			});
+			console.log( 'Script loaded.' );
 		});
 	},
 
@@ -70,7 +70,6 @@ Lapis = {
 	{
 		var channels = this.slack.channels;
 		var ch;
-		var name;
 		var general;
 		for ( ch in channels )
 		{
