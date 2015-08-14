@@ -20,7 +20,7 @@ Lapis = {
 			console.log( 'Ready Lapis ...' );
 			self.loadScript( __dirname );
 			self.startServer();
-			self.getChannel( 'general' ).send( 'Hello!' );
+			self.post( { 'message': 'Hello!' } );
 		});
 
 		self.slack.on( 'message', function( message )
@@ -99,7 +99,7 @@ Lapis = {
 
 			socket.on( 'end', function( socket )
 			{
-				self.command( JSON.parse( server.data ) );
+				self.post( JSON.parse( server.data ) );
 				server.data = '';
 			});
 		});
@@ -118,7 +118,7 @@ Lapis = {
 		server.listen( process.env.SLACK_LAPIS_PORT || 12345, '127.0.0.1' );
 	},
 
-	command: function( data )
+	post: function( data )
 	{
 		if ( ! data.message ){ return; }
 		this.getChannel( data.channel || 'general' ).send( data.message );
