@@ -45,8 +45,12 @@ You can get token.
 set SLACK_LAPIS_TOKEN=[SLACK TOKEN]
 ```
 
-## Start
+## Service Start
+
+Create directory /var/lapis/ and /var/lapis/log.
+
+Clone Lapis.
 
 ```
-npm run serve
+npm run service
 ```

@@ -9,10 +9,11 @@
   },
   "main": "lapis.js",
   "scripts": {
-    "serve": "node ./lapis.js"
+    "service": "forever start /var/lapis/lapis.js -l /var/lapis/log"
   },
   "author": "Hiroki",
   "dependencies": {
+    "forever": "^0.15.1",
     "slack-client": "^1.4.1"
   },
   "devDependencies": {},
