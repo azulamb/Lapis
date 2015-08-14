@@ -1,14 +1,27 @@
-var Slack = require('slack-node');
+var Slack = require('slack-client');
 
-slack = new Slack( process.env.SLACK_LAPIS_TOKEN || "" );
+// Slack setting
+var autoReconnect = true;
+var autoMark = true;
 
-slack.api("users.list", function(err, response) {
-  console.log(response);
+var slack = new Slack( process.env.SLACK_LAPIS_TOKEN || "", autoReconnect, autoMark);
+
+slack.on( 'open', function()
+{
+	console.log( 'Ready Lapis...' );
 });
 
-slack.api('chat.postMessage', {
-  text:'hello from nodejs', 
-  channel:'#general'
-}, function(err, response){
-  console.log(response);
+slack.on( 'message', function(message)
+{
+	console.log("msg",message.text);
+	var channel = slack.getChannelGroupOrDMByID( message.channel );
+	var user = slack.getUserByID(message.user);
+	channel.send( "Hello." );
 });
+
+slack.on( 'error', function(error)
+{
+	console.error( 'Error:', error );
+});
+
+slack.login();

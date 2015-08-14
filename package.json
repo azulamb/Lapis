@@ -8,11 +8,12 @@
     "url": "https://github.com/HirokiMiyaoka/Lapis.git"
   },
   "main": "lapis.js",
-  "scripts": {},
+  "scripts": {
+    "serve": "node ./lapis.js"
+  },
   "author": "Hiroki",
   "dependencies": {
-    "slack-client": "^1.4.1",
-    "slack-node": "^0.1.3"
+    "slack-client": "^1.4.1"
   },
   "devDependencies": {},
   "browserify-shim": {}
