@@ -120,7 +120,7 @@ Lapis = {
 	command: function( data )
 	{
 		if ( ! data.message ){ return; }
-		self.getChannel( data.channel || 'general' ).send( data.message );
+		this.getChannel( data.channel || 'general' ).send( data.message );
 	}
 };
 
