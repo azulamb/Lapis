@@ -100,6 +100,7 @@ Lapis = {
 			socket.on( 'end', function( socket )
 			{
 				self.command( JSON.parse( server.data ) );
+				server.data = '';
 			});
 		});
 
