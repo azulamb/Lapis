@@ -20,7 +20,7 @@ https://slack.com/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URL&
 You can get Address.
 
 ```
-http://lapis.azulite.net/redirect?code=CODE&state=
+REDIRECT_URL?code=CODE&state=
 ```
 
 ### Get token
