@@ -99,7 +99,7 @@ Lapis = {
 
 			socket.on( 'end', function( socket )
 			{
-				self.command( JSON.parse( data ) );
+				self.command( JSON.parse( server.data ) );
 			});
 		});
 
