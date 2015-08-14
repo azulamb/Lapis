@@ -1,5 +1,6 @@
 var Slack = require('slack-client');
 var fs = require('fs');
+var net = require('net');
 
 Lapis = {
 	slack: null,
@@ -18,6 +19,7 @@ Lapis = {
 		{
 			console.log( 'Ready Lapis ...' );
 			self.loadScript( __dirname );
+			self.startServer();
 			self.getChannel( 'general' ).send( 'Hello!' );
 		});
 
@@ -77,6 +79,48 @@ Lapis = {
 			if ( channels[ ch ].name === 'general' ){ general = ch; }
 		}
 		return this.slack.getChannelGroupOrDMByID( general );
+	},
+
+	startServer: function()
+	{
+		var self = this;
+		var server = net.createServer();
+		server.data = '';
+
+		console.log( 'Prepare server ...' );
+
+		server.on( 'connection', function( socket )
+		{
+			console.log( 'Server start ... ' + socket.remoteAddress + ':' + socket.remotePort );
+
+			socket.on( 'data', function( chunk ) {
+				server.data += chunk.toString();
+			});
+
+			socket.on( 'end', function( socket )
+			{
+				self.command( JSON.parse( data ) );
+			});
+		});
+
+		server.on( 'listening', function() {
+			var addr = server.address();
+			console.log( 'Listening start on server ... ' + addr.address + ':' + addr.port );
+		});
+
+		process.on( 'SIGINT', function() {
+			server.close();
+			process.exit();
+		});
+
+		server.maxConnections = 3;
+		server.listen( process.env.SLACK_LAPIS_PORT || 12345, '127.0.0.1' );
+	},
+
+	command: function( data )
+	{
+		if ( ! data.message ){ return; }
+		self.getChannel( data.channel || 'general' ).send( data.message );
 	}
 };
 
