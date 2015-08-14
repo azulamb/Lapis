@@ -122,7 +122,10 @@ exports.isMatch = function( msg ){ return true or false; }
 Action.
 
 ```
-exports.exec = function( slack, channel, message ){
+exports.exec = function( lapis, channel, message ){
 	// Action.
+	// If you need slack, use "lapis.slack".
+	// You can send message "channel.send()".
+	// You can get message text "message.text".
 }
 ```
