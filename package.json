@@ -1,5 +1,5 @@
 {
-  "name": "lapis",
+  "name": "Lapis",
   "version": "0.0.1",
   "description": "",
   "private": true,
@@ -9,7 +9,7 @@
   },
   "main": "lapis.js",
   "scripts": {
-    "service": "forever start /var/lapis/lapis.js -l /var/lapis/log"
+    "service": "forever start /home/lapis/Lapis/lapis.js -l /home/lapis/Lapis/log"
   },
   "author": "Hiroki",
   "dependencies": {

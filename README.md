@@ -7,35 +7,13 @@ https://api.slack.com/docs/oauth
 
 ### Step.1 Create application
 
-https://api.slack.com/applications
+https://azulite.slack.com/services/new
 
-### Get code
+move DIY Integrations & Customizations
 
-Access URL.
+Click Bots view.
 
-```
-https://slack.com/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URL&scope=identify,read,post,client,admin
-```
-
-You can get Address.
-
-```
-REDIRECT_URL?code=CODE&state=
-```
-
-### Get token
-
-Access URL.
-
-```
-https://slack.com/api/oauth.access?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=CODE&redirect_uri=REDIRECT_URL
-```
-
-You can get token.
-
-```
-{"ok":true,"access_token":TOKEN,"scope":"identify,read,post,client,admin"}
-```
+Add bot Integration.
 
 ## Environment variable
 
@@ -43,6 +21,29 @@ You can get token.
 
 ```
 set SLACK_LAPIS_TOKEN=[SLACK TOKEN]
+```
+
+## Install
+
+### node
+
+```
+# yum install epel-release
+yum install nodejs npm --enablerepo=epel
+```
+
+### Create dir
+```
+# adduser -s /sbin/nologin lapis
+or
+$ mkdir lapis
+```
+
+### clone
+
+```
+$ cd /home/lapis/
+$ git clone https://github.com/HirokiMiyaoka/Lapis.git
 ```
 
 ## Service Start

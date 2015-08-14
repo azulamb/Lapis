@@ -12,7 +12,7 @@ function Start()
 
 	slack.on( 'open', function()
 	{
-		console.log( 'Ready Lapis...' );
+		console.log( 'Ready Lapis ...' );
 		LoadScript( __dirname );
 	});
 
@@ -41,6 +41,7 @@ function LoadScript( root )
 	fs.readdir( dir, function( err, files )
 	{
 		if ( err ){ throw err; }
+
 		files.filter( function( file )
 		{
 			return fs.statSync( dir + file ).isFile() && /.*\.js$/.test( file );
