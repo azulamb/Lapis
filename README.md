@@ -131,3 +131,51 @@ exports.exec = function( lapis, channel, message ){
 	// You can get message text "message.text".
 }
 ```
+
+## Post from out side.
+
+Lapis stand server, 127.0.0.1:SLACK_LAPIS_PORT.
+
+SLACK_LAPIS_PORT is environment variable or 12345.
+
+You can connect and send JSON to this server.
+
+```
+var net = require('net');
+
+var options = {};
+options.host = '127.0.0.1';
+options.port = process.env.SLACK_LAPIS_PORT || 12345;
+
+var client = net.connect( options );
+
+client.on( 'error', function( e )
+{
+	console.error( 'Failed ... ' + options.host + ':' + options.port );
+	console.error( e.message );
+});
+
+client.on('connect', function()
+{
+	console.log( 'Connection ... ' + options.host + ':' + options.port );
+});
+
+client.on('close', function()
+{
+	console.log( 'Client Closed' );
+});
+
+client.write('{"message":"Hey!"}');
+client.end();
+```
+
+### JSON
+
+```
+{
+	"message": "POST MESSAGE",
+	"channel": "POST CHANNEL"
+}
+```
+
+channel is option. (default general)
