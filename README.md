@@ -92,6 +92,12 @@ node lapis.js
 #### Install forever
 
 ```
+# npm run stop
+```
+
+or 
+
+```
 # npm i -g forever
 ```
 
