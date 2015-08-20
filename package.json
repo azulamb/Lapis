@@ -9,7 +9,8 @@
   },
   "main": "lapis.js",
   "scripts": {
-    "service": "forever start /home/lapis/Lapis/lapis.js -l /home/lapis/Lapis/log"
+    "service": "forever start /home/lapis/Lapis/lapis.js -l /home/lapis/Lapis/log",
+    "stop": "forever stop lapis.js"
   },
   "author": "Hiroki",
   "dependencies": {
